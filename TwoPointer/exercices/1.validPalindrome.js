@@ -17,3 +17,32 @@ function isPalindrome(s) {
     }
     return true
 }
+
+// Mejor Performance
+
+function isPalindrome(s) {
+    let left = 0
+    let rigth = s.length - 1
+
+    while (rigth > left) {
+        console.log((/^[a-zA-Z0-9]+$/.test(s[left])))
+
+        while (!(/^[a-zA-Z0-9]+$/.test(s[left]))) {
+            left++
+        }
+        while (!(/^[a-zA-Z0-9]+$/.test(s[rigth]))) {
+            rigth--
+        }
+
+        if (rigth < left) {
+            return true
+        }
+
+        if (s[left].toLowerCase() !== s[rigth].toLowerCase()) {
+            return false
+        }
+        rigth--
+        left++
+    }
+    return true
+}
