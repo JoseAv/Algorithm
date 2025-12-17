@@ -15,7 +15,8 @@ function characterReplacement(s, k) {
 
         // esto debe hacerse asi porque al hacer ... dentro de una funcion toma todos los argumentos del array de esta forma 1,2,3,4 como valores separados
         // pero si solo dejamos el array pasara que cuando tiene un valor lo intenera converir a string y luego a number por eso al principio funciona
-        // pero despues da nan ya que mas de 2 valores lo toma como  '1,2' y esto a number da nan pero '1' aunque este en un arreglo da 1
+        // pero despues da nan ya que mas de 2 valores lo toma como  '1,2' y 
+        // esto a number da nan pero '1' aunque este en un arreglo da 1 como esto -> hacemos Number([1]) === 1 pero Number([1,2]) === nan
         let max_frequency = Math.max(...Object.values(saveValues))
         let result = (rigth - left + 1) - max_frequency <= k ? true : false
         if (!result) {
