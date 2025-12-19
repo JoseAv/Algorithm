@@ -33,5 +33,50 @@ function minWindow(s, t) {
     return result
 }
 
-const s = "x", t = "xy"
+// const s = "x", t = "xy"
+// console.log(minWindow(s, t))
+
+
+// Mi forma funciona pero no es un slide windows optimizado, esta es la forma mas optimizada
+
+function minWindow(s, t) {
+    const need = t.split('').reduce((acc, cur) => {
+        acc[cur] = (acc[cur] || 0) + 1
+        return acc
+    }, {})
+    const comprobate = {}
+    let result = [Infinity, 0, 0]
+    let right = 0
+    let left = 0
+    let countFormed = 0
+    const requied = Object.keys(need).length
+    while (right < s.length) {
+        const valueRight = s[right]
+        comprobate[valueRight] = (comprobate[valueRight] || 0) + 1
+
+        if (need[valueRight] && need[valueRight] === comprobate[valueRight]) {
+            countFormed++
+        }
+
+        while (left <= right && countFormed === requied) {
+            const valueLeft = s[left]
+            const moved = right - left + 1
+            if (result[0] > moved) {
+                result = [moved, left, right]
+            }
+
+            comprobate[valueLeft]--
+            left++
+            if (need[valueLeft] && comprobate[valueLeft] < need[valueLeft]) {
+                countFormed--
+            }
+        }
+
+        right++
+    }
+    return result[0] === Infinity ? '' : s.substring(result[1], result[2] + 1)
+}
+
+
+const s = "aaaaaaaaaaaabbbbbcdd", t = "abcdd"
 console.log(minWindow(s, t))
