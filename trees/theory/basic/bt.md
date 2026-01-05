@@ -83,7 +83,7 @@ Existen 4 formas de recorrer un arbol
 - Cuando terminamos con un nivel, pasamos al otro.
 
 ***Ejemplo:***
-![alt text](image.png)
+![alt text](4.png)
 
 Este seria la sucesion a seguir
 
