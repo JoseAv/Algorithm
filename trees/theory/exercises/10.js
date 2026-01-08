@@ -17,3 +17,20 @@
     return result
 
     }
+
+
+// Forma mas eficiente
+
+   function isValidBST2(root) {
+
+    function recursive(root,min= -Infinity,max= +Infinity){
+
+             if(!root ) return true
+
+             if(root.val<= min || root.val >= max){
+                 return false
+             }
+           return recursive(root.right,root.val,max) && recursive(root.left,min,root.val)         
+    }
+    return recursive(root)
+    }
